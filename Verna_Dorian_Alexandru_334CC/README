@@ -1,0 +1,88 @@
+Verna Dorian-Alexandru 334CC
+Proiect IC 2022
+
+Pasii de implementare:
+1) Intelegere schema, conexiuni, enunt tema
+2) Realizare schematic
+3) Realizare board
+4) Asigurare ca se respecta constrangerile si regulile de
+good practice (asta am aplicat-o si la pasul 3)
+
+Realizare schematic -> am folosit biblioteca pusa la
+dispozitie, din care am luat toate piesele de care am
+avut nevoie (realizarea schematicului a fost partea cea
+mai usoara din acest proiect).
+
+Realizare board -> aceasta a fost partea cea mai grea.
+La inceput am amplasat pisele mari conform ultimului document
+atasat in enunt (pinii, reset, mode, WROVER).
+Apoi am pus battery holder-ul astfel incat pad-ul sa nu fie
+sub antena.
+Dupa aceea am luat fiecare piesa care era in schematic si am
+incercat sa o amplasez in spatiul dintre pini.
+Am incercat sa iau in considerare semnalele de care are
+nevoie fiecare element. De exemplu, daca o piesa are nevoie
+de 3V3, atunci am incercat sa o amplasez astfel incat sa
+aibe acces la 3V3 cu usurinta si sa nu blocheze alte fire,
+iar firul sa nu inchida un poligon. De asemenea, am incercat
+sa fac in asa fel incat sa nu am vias-uri atunci cand o sa
+trag firele.
+Odata ce amplasam fiecare piesa, incercam sa trag de mana firele
+care faceau parte din trasee de putere: 3V3, VIN, VIN_USB, VIN_BAT.
+O atentie sporita am acordat-o rutei diferentiale pe care a
+trebuit sa o realizez. A fost, de altfel, unul dintre primele
+lucruri pe care le-am facut la board.
+Am rearanjat si rotit fiecare piesa de mai multe ori pana cand
+m-am asigurat ca nu o sa am airwire-uri.
+Dupa ce am tras toate firele din traseele de putere (0.3 mm),
+am dat Autorouter pentru a completa cu rutele de grosime inferioara.
+Surprinzator nu am avut nicio eroare, dar am avut niste warning-uri
+de Wire Stub pe care le-am rezolvat destul de usor (trasesem eu putin
+mai ciudat in unele locuri firele:))).
+
+IMPORTANT: am incercat de vreo 5 sau 6 ori sa fac acest board
+L-am gresit de foarte multe ori (din punctul meu de vedere) pana
+cand mi-a iesit.
+
+Apoi am facut planul de masa astfel incat sa nu cuprinda antena.
+Am facut si pe BOTTOM si pe TOP si apoi am aplicat Ratsnest.
+
+O problema pe care am avut-o a fost ca un fir de 3V3 l-am tras
+ocolind antena, ceea ce era cam ciudat pentru ca nu era cuprins de
+planul de masa. Asa ca am modificat board-ul astfel incat sa fie la
+dreapta de antena si nu la stanga.
+
+Am respectat dimensiunile date in schema, am folosit Dimension pentru
+a masura aceste dimensiuni.
+
+Constrangeri / Reguli de Good Practice:
+-> am respecta dimensiunile necesare pentru traseele de putere
+-> am aplicat verificarea cu ERC si DRC, inclusiv adaugarea fisierului
+de verificare din enunt
+-> Condensatoarele de decuplare le-am pus aproape de 3V3, deci de pini.
+Asa cum am spus mai sus, am incercat sa amplasez piesele astfel incat
+sa pot trage mai usor firele pentru semnalele de care acestea au nevoie.
+-> Am incercat sa evit vias-uri la traseele de putere, VIN_BAT este pe
+BOTTOM si atunci trebuia sa trec pe BOTTOM de la piesele care erau pe
+TOP si foloseau acest semnal, dar din cate stiu acesta nu este
+considerat un vias (pentru ca nu m-am intors pe TOP odata ce am intrat
+pe BOTTOM de pe TOP). Vias-urile pe care le am sunt pe traseele simple,
+care au fost generate la Autoroute.
+-> Pentru ruta diferentiala, am incercat sa o fac cat mai scurta, iar
+firele sa fie cat mai paralele (exceptand zonele cand se realizeaza
+conexiunile)
+-> Am folosit 0.3 mm pentru traseele de alimentare
+-> Am incercat sa amplasez componentele conform specificatiei
+-> De asemenea, am incercat sa nu am unghiuri drepte pentru trasee
+
+In cele de ma sus consider ca am acoperit in general ceea ce trebuia
+prezentat in README, nu cred ca am ratat ceva de implementat in enuntul
+temei, sper sa fie ok.
+
+Tema a fost ok, desi la inceput nu prea stiam ce vrea borad-ul de la
+viata mea. A fost putin cam ciudat sa vad toate firele incurcate acolo,
+dar e destul de satisfying cand la sfarsit le vezi pe toate conectate:))
+
+Felicitari pt tema si keep up the good work!
+
+Verna Dorian-Alexandru 334CC
